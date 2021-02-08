@@ -18,10 +18,9 @@ function App() {
 
       <div className="container mx-auto m-5">
         <Switch>
-          <Route path="/movieForm" component={MovieForm} />
           <Route path="/loginForm" component={LoginForm} />
           <Route path="/registerForm" component={RegisterForm} />
-          <Route path="/movies/:id" component={MovieDetails} />
+          <Route path="/movies/:id" component={MovieForm} />
           <Route path="/Rentals" component={Rentals} />
           <Route path="/Customers" component={Customers} />
           <Route path="/Movies" component={Movies} />
