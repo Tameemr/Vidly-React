@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import "./App.css";
+import { ToastContainer } from "react-toastify";
 import NavBar from "../src/components/common/navbar";
 import LoginForm from "../src/components/common/loginForm";
 import RegisterForm from "../src/components/common/registerForm";
@@ -8,14 +8,15 @@ import MovieForm from "../src/components/common/movieForm";
 import Movies from "./components/movies";
 import Customers from "./components/customers";
 import Rentals from "./components/rentals";
-import MovieDetails from "./components/movieDetails";
 import NotFound from "./components/notFound";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 function App() {
   return (
     <div>
+      <ToastContainer />
       <NavBar />
-
       <div className="container mx-auto m-5">
         <Switch>
           <Route path="/loginForm" component={LoginForm} />
