@@ -1,17 +1,22 @@
 import React, { Component } from "react";
+
 import { Route, Switch, Redirect } from "react-router-dom";
+
 import { ToastContainer } from "react-toastify";
-import NavBar from "../src/components/common/navbar";
-import LoginForm from "../src/components/common/loginForm";
-import Logout from "../src/components/common/logout";
-import auth from "./services/authService";
-import RegisterForm from "../src/components/common/registerForm";
-import MovieForm from "../src/components/common/movieForm";
+import "react-toastify/dist/ReactToastify.css";
 import Movies from "./components/movies";
+import NavBar from "./components/common/navbar";
 import Customers from "./components/customers";
 import Rentals from "./components/rentals";
 import NotFound from "./components/notFound";
-import "react-toastify/dist/ReactToastify.css";
+import MoviesDetails from "./components/common/moviesDetails";
+import LoginForm from "./components/common/LoginForm";
+import RegisterForm from "./components/common/RegisterForm";
+import MovieForm from "./components/common/movieForm";
+import Logout from "./components/common/logout";
+import auth from "./services/authService";
+
+import "react-toastify/dist/react-toastify.esm";
 import "./App.css";
 
 class App extends Component {
@@ -28,16 +33,18 @@ class App extends Component {
         <NavBar user={this.state.user} />
         <main className="container p-5">
           <Switch>
-            <Route path="/loginForm" component={LoginForm} />
-            <Route path="/logout" component={Logout} />
-            <Route path="/registerForm" component={RegisterForm} />
+            <Route path="/LoginForm" component={LoginForm} />
+            <Route path="/Logout" component={Logout} />
             <Route path="/movies/:id" component={MovieForm} />
-            <Route path="/Rentals" component={Rentals} />
+            <Route path="/RegisterForm" component={RegisterForm} />
+            <Route path="/Movies" exact component={Movies} />
+            <Route path="/Movies/:id" component={MoviesDetails} />
             <Route path="/Customers" component={Customers} />
-            <Route path="/Movies" component={Movies} />
-            <Route path="/notFound" component={NotFound} />
-            <Redirect from="/" exact to="/movies" />
-            <Redirect to="/notFound" />
+            <Route path="/Rentals" component={Rentals} />
+            <Redirect from="/" exact to="/Movies" />
+            <Route path="/not-found" component={NotFound} />
+
+            <Redirect to="/not-found" />
           </Switch>
         </main>
       </React.Fragment>

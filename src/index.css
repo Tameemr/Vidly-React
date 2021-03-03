@@ -1,5 +1,5 @@
 body {
-  padding: 0 0 0 0;
+  padding: 000;
 
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -13,7 +13,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 .clickable {
   cursor: pointer;
 }

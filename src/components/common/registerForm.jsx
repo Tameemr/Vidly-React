@@ -1,8 +1,9 @@
 import React from "react";
+
 import Form from "./form";
 import Joi from "joi-browser";
-import * as userService from "../../services/userService";
 import auth from "../../services/authService";
+import * as userService from "../../services/userService";
 class LoginForm extends Form {
   state = { data: { username: "", password: "", name: "" }, errors: {} };
   schema = {

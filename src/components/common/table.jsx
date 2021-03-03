@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
 
-class Table extends Component {
-  render() {
-    const { columns, onSort, sortColumn, data } = this.props;
+
+const Table = ({ data, onSort, sortColumn, columns }) => {
+  {
     return (
       <table className="table">
         <TableHeader
@@ -13,9 +13,10 @@ class Table extends Component {
           sortColumn={sortColumn}
         />
         <TableBody data={data} columns={columns} />
+        
       </table>
     );
   }
-}
+};
 
 export default Table;

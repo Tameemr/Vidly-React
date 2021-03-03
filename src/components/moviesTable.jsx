@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import Like from "../components/common/like";
-import Table from "./common/table";
+import Table from "../components/common/table";
 import { Link } from "react-router-dom";
-
 class MoviesTable extends Component {
   columns = [
     {
       path: "title",
       label: "Title",
       content: (movie) => (
-        <Link to={`/movies/${movie._id}`}>{movie.title}</Link>
+        <Link to={`/Movies/${movie._id}`}>{movie.title}</Link>
       ),
     },
     { path: "genre.name", label: "Genre" },
@@ -28,8 +27,7 @@ class MoviesTable extends Component {
         <button
           onClick={() => this.props.onDelete(movie)}
           type="button"
-          class="btn btn-danger btn-sm"
-        >
+          class="btn btn-danger btn-sm">
           Delete
         </button>
       ),
