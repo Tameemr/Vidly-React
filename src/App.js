@@ -8,6 +8,7 @@ import Movies from "./components/movies";
 import NavBar from "./components/common/navbar";
 import Customers from "./components/customers";
 import Rentals from "./components/rentals";
+import ProtectedRoute from "./components/common/protectedRoute";
 import NotFound from "./components/notFound";
 import MoviesDetails from "./components/common/moviesDetails";
 import LoginForm from "./components/common/LoginForm";
@@ -27,15 +28,16 @@ class App extends Component {
   }
 
   render() {
+    const { user } = this.setState;
     return (
       <React.Fragment>
         <ToastContainer />
-        <NavBar user={this.state.user} />
+        <NavBar user={user} />
         <main className="container p-5">
           <Switch>
             <Route path="/LoginForm" component={LoginForm} />
             <Route path="/Logout" component={Logout} />
-            <Route path="/movies/:id" component={MovieForm} />
+            <ProtectedRoute path="/movies/:id" componenet={MovieForm} />
             <Route path="/RegisterForm" component={RegisterForm} />
             <Route
               path="/Movies"
