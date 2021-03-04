@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-
 import { Route, Switch, Redirect } from "react-router-dom";
-
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Movies from "./components/movies";
 import NavBar from "./components/common/navbar";
 import Customers from "./components/customers";
 import Rentals from "./components/rentals";
-import ProtectedRoute from "./components/common/protectedRoute";
 import NotFound from "./components/notFound";
 import MoviesDetails from "./components/common/moviesDetails";
 import LoginForm from "./components/common/LoginForm";
@@ -16,19 +13,17 @@ import RegisterForm from "./components/common/RegisterForm";
 import MovieForm from "./components/common/movieForm";
 import Logout from "./components/common/logout";
 import auth from "./services/authService";
-
+import ProtectedRoute from "./components/common/protectedRoute";
 import "react-toastify/dist/react-toastify.esm";
 import "./App.css";
-
 class App extends Component {
   state = {};
   componentDidMount() {
     const user = auth.getCurrentUser();
     this.setState({ user });
   }
-
   render() {
-    const { user } = this.setState;
+    const { user } = this.state;
     return (
       <React.Fragment>
         <ToastContainer />
@@ -37,19 +32,20 @@ class App extends Component {
           <Switch>
             <Route path="/LoginForm" component={LoginForm} />
             <Route path="/Logout" component={Logout} />
-            <ProtectedRoute path="/movies/:id" componenet={MovieForm} />
+            <ProtectedRoute path="/movies/:id" component={MovieForm} />;
             <Route path="/RegisterForm" component={RegisterForm} />
             <Route
               path="/Movies"
               exact
-              render={(props) => <Movies {...props} user={this.state.user} />}
+              render={(props) => (
+                <Movies {...this.props} user={this.state.user} />
+              )}
             />
             <Route path="/Movies/:id" component={MoviesDetails} />
             <Route path="/Customers" component={Customers} />
             <Route path="/Rentals" component={Rentals} />
             <Redirect from="/" exact to="/Movies" />
             <Route path="/not-found" component={NotFound} />
-
             <Redirect to="/not-found" />
           </Switch>
         </main>
@@ -57,5 +53,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
