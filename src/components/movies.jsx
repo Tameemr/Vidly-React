@@ -9,18 +9,6 @@ import { getGenres } from "../services/genreService";
 import SearchBox from "./common/searchBox";
 import _ from "lodash";
 import { toast } from "react-toastify";
-// import React, { Component } from "react";
-// import { deleteMovie, getMovies } from "../services/movieService";
-// import { toast } from "react-toastify";
-
-// import ListGroup from "./common/listGroup";
-// import MoviesTable from "./moviesTable";
-// import Pagination from "../components/common/pagination";
-// import { paginate } from "../../src/utils/paginate";
-// import { getGenres } from "../services/genreService";
-// import _ from "lodash";
-// import { Link } from "react-router-dom";
-// import SearchBox from "./common/searchBox";
 
 class Movies extends Component {
   state = {
@@ -87,7 +75,7 @@ class Movies extends Component {
     let filtered = allMovies;
     if (searchQuery)
       filtered = allMovies.filter((m) =>
-        m.title.toLowerCase().startsWith(searchQuery.toLocaleLowerCase()),
+        m.title.toLowerCase().startsWith(searchQuery.toLocaleLowerCase())
       );
     else if (selectedGenre && selectedGenre._id)
       filtered = allMovies.filter((m) => m.genre._id === selectedGenre._id);
@@ -105,6 +93,7 @@ class Movies extends Component {
     if (count === 0) return <p>There is no movies to show</p>;
 
     const { data: movies, TotalCount } = this.getPagedData();
+    const { user } = this.props;
 
     return (
       <div className="row">
@@ -116,12 +105,15 @@ class Movies extends Component {
           />
         </div>
         <div className="col">
-          <Link
-            to="/movies/New"
-            className="btn btn-primary"
-            style={{ marginBotton: 20 }}>
-            New Movie
-          </Link>
+          {user && (
+            <Link
+              to="/movies/New"
+              className="btn btn-primary"
+              style={{ marginBotton: 20 }}
+            >
+              New Movie
+            </Link>
+          )}
           <p>you have {TotalCount} movies in the list</p>
 
           <SearchBox value={searchQuery} onChange={this.HandleSearch} />
