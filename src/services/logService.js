@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 // import Raven from "raven-js";
 
 function init() {

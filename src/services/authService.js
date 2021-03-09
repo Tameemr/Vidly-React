@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import http from "./httpService";
 import { apiUrl } from "../config/config.json";
 import jwtDecode from "jwt-decode";

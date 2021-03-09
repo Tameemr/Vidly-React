@@ -1,7 +1,7 @@
+/* eslint-disable no-lone-blocks */
 import React from "react";
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
-
 
 const Table = ({ data, onSort, sortColumn, columns }) => {
   {
@@ -13,7 +13,6 @@ const Table = ({ data, onSort, sortColumn, columns }) => {
           sortColumn={sortColumn}
         />
         <TableBody data={data} columns={columns} />
-        
       </table>
     );
   }
